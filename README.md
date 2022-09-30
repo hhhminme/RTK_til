@@ -1,6 +1,6 @@
 # RTL_til
 
-### 해당 레포지토리는 Jest 및 테스팅 라이브러리로 React 테스트하기 강의를 보면서 정리한 내용과 코드 입니다. 
+### 해당 레포지토리는 Testing React with Jest and React Testing Library (RTL)를 보면서 정리한 내용과 코드 입니다. 
 
 [Section 1 : 소개](https://github.com/hhhminme/RTL_til/blob/main/section_1.md)
 
