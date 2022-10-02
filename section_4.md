@@ -138,3 +138,178 @@ test('Checkbox disables button on first click and enables on second click', () =
   expect(confirmButton).toBeDisabled();
 });
 ```
+
+# user-event
+
+- user-event is a companion library for Testing Library that simulates user interactions by dispatching the events that would happen if the interaction took place in a browser.
+- `yarn add --dev @testing-library/user-event`
+- 참고로 --save-dev 부분은 복사하지 않습니다. create-react-app은 더 이상 --save-dev를 사용하지 않아요. dev 의존성과 정규 의존성을 구분해 사용하는 걸 중단했거든요. 대부분의 경우에는 상관이 없기 때문이죠. 실행과 개발이 분리되어 있는 노드 프로젝트의 경우에는 몰라도 리액트 프로젝트의 경우에는, 실행을 하고 있다면 항상 코드 자체가 아닌 빌드를 사용하기 때문에 dev 의존성인지, 정규 의존성인지 프로덕션 의존성인지의 여부는 중요하지 않게 되죠
+
+## Writing tests with `userEvent`[](https://testing-library.com/docs/user-event/intro#writing-tests-with-userevent)
+
+We recommend invoking `[userEvent.setup()](https://testing-library.com/docs/user-event/setup)` before the component is rendered. This can be done in the test itself, or by using a setup function. We discourage rendering or using any `userEvent` functions outside of the test itself - e.g. in a `before`/`after` hook - for reasons described in ["Avoid Nesting When You're Testing"](https://kentcdodds.com/blog/avoid-nesting-when-youre-testing).
+
+- recture question
+
+[https://github.com/bonnie/udemy-TESTING-LIBRARY/issues/12](https://github.com/bonnie/udemy-TESTING-LIBRARY/issues/12)
+
+# screen Query Methods
+
+`command[All]ByQueryType`
+
+- command
+  - get : expect element to be in DOM
+  - query : expect element not to be in DOM
+  - find : expect element to appear async
+- [All]
+  - (exclude) expect only one match
+  - (include) expect more than one match
+- QueryType
+  - Role(most preferred)
+  - AltText(images)
+  - Text(display elements)
+  - Form elements
+    - PlaceholderText
+    - LabelText
+    - DisplayValue
+
+# screen Query Reference
+
+- [https://testing-library.com/docs/dom-testing-library/api](https://testing-library.com/docs/dom-testing-library/api-queries)-queries
+- [https://testing-library.com/docs](https://testing-library.com/docs)/react-testing-library/cheatsheet
+  - specific for react
+- [https://testing-library.com/docs/guide-which-query](https://testing-library.com/docs/guide-which-query)
+
+# not wrapped in act(…) warning
+
+- React updated element after test aws finished
+- Don’t want to follow the advice to wrap in act(…)
+  - Testing Library already does this for us!
+  - [https://testing-library.com/docs/preact-testing-library/api/#act](https://testing-library.com/docs/preact-testing-library/api/#act)
+
+## `act`[](https://testing-library.com/docs/preact-testing-library/api/#act)
+
+Just a convenience export that points to preact/test-utils/act. **All renders and events being fired are wrapped in `act`, so you don't really need this.** It's responsible for flushing all effects and rerenders after invoking it.
+
+- To remedy this error:
+  - Determine what changes after the test is over(async)
+  - Account for the change in test by:
+    - awaiting the change, and
+    - asseting on it
+    [https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning](https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning) → more detail whats going on
+- [https://testing-library.com/docs/guide-disappearance/](https://testing-library.com/docs/guide-disappearance/)
+
+→ await userEvent.unhover를 사용했기 때문에 이미 해당 element가 사라졌으므로 waitForElementToBeRemoved를 사용할 필요가 없다.
+
+```tsx
+//SummaryForm.test.jsx
+import { queryByText, render, screen } from '@testing-library/react';
+import SummaryForm from '../SummaryForm';
+import userEvent from '@testing-library/user-event';
+test('Initial conditions', () => {
+  render(<SummaryForm />);
+  const checkbox = screen.getByRole('checkbox', {
+    name: /terms and conditions/i,
+  });
+  //find Checkbox
+  expect(checkbox).not.toBeChecked();
+
+  const confirmButton = screen.getByRole('button', { name: /confirm order/i });
+  expect(confirmButton).toBeDisabled();
+});
+
+test('Checkbox disables button on first click and enables on second click', async () => {
+  const user = userEvent.setup();
+  render(<SummaryForm />);
+
+  const checkbox = screen.getByRole('checkbox', {
+    name: /terms and conditions/i,
+  });
+
+  const confirmButton = screen.getByRole('button', { name: /confirm order/i });
+
+  await user.click(checkbox);
+  expect(confirmButton).toBeEnabled();
+
+  await user.click(checkbox);
+  expect(confirmButton).toBeDisabled();
+});
+
+test('popover responds to hover', async () => {
+  const user = userEvent.setup();
+  render(<SummaryForm />);
+
+  // popover starts out hidden
+  const nullPopover = screen.queryByText(
+    /no ice cream will actually be delivered/i
+  );
+  expect(nullPopover).not.toBeInTheDocument();
+
+  // popover appears upon mouseover of checkbox label
+  const termsAndConditions = screen.getByText(/terms and conditions/i);
+  await user.hover(termsAndConditions);
+
+  const popover = screen.getByText(/no ice cream will actually be delivered/i); // don't need matcher
+  expect(popover).toBeInTheDocument(); // not work functional, make more readable test
+
+  // popover disappears when we mouse out
+  await user.unhover(termsAndConditions);
+  const nullPopoverAgain = screen.queryByText(
+    /no ice cream will actually be delivered/i
+  );
+  expect(nullPopoverAgain).not.toBeInTheDocument();
+});
+```
+
+```jsx
+//SummaryForm.jsx
+import React, { useState } from 'react';
+import { Button, Form, Popover, OverlayTrigger } from 'react-bootstrap';
+
+const SummaryForm = () => {
+  const [tcChecked, setTcChecked] = useState(false);
+
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Body>No ice cream will actually be delivered</Popover.Body>
+    </Popover>
+  );
+
+  const checkboxLabel = (
+    <span>
+      I agree to
+      <OverlayTrigger placement="right" overlay={popover}>
+        <span style={{ color: 'blue' }}>Terms and Conditions</span>
+      </OverlayTrigger>
+    </span>
+  );
+
+  return (
+    <Form>
+      <Form.Group controlId="terms and conditions">
+        <Form.Check
+          type="checkbox"
+          checked={tcChecked}
+          onChange={(e) => setTcChecked(e.target.checked)}
+          label={checkboxLabel}
+        />
+      </Form.Group>
+      <Button variant="primary" type="submit" disabled={!tcChecked}>
+        Confirm order
+      </Button>
+    </Form>
+  );
+};
+
+export default SummaryForm;
+```
+
+# SummaryForm Review
+
+- (review) testing flow where checkbox controls whether button is disabled
+- mouseover for terms and conditions
+  - `userEvent.hover` and `userEvent.unhover` methods
+  - `queryByText` to and `expect().not.toBeInTheDocument()` for element staring out not on page
+  - `async waitForElementToBeRemoved` for element that was there and then disappeared
+- test not wrapped in act(…) warning
+  - Determine how component is getting updated async and account for in tests
