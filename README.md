@@ -11,3 +11,7 @@
 [Section 4 : 온디맨드 선데이 아이스크림 : Form 복습과 팝오버](https://github.com/hhhminme/RTL_til/blob/main/section_4.md)
 
 [Section  5 : Mock Service Wocker(MSW)로 서버 응답 시뮬레이션 하기](https://github.com/hhhminme/RTL_til/blob/main/section_5.md)
+
+# 질문 항목
+
+[WARNING: breaking changes in user-event v14](https://github.com/bonnie/udemy-TESTING-LIBRARY/issues/12)

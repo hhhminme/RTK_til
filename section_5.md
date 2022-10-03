@@ -102,7 +102,8 @@ afterAll(() => server.close());
 
 - Mock Service Worker in Tests
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9e3f9a5a-3caa-4d74-b1fd-392a756b0e13/Untitled.png)
+![image](https://user-images.githubusercontent.com/54930877/193447722-7221c3da-3af4-4ed4-96b4-6a6eaa31d02e.png)
+
 
 # await findBy
 
