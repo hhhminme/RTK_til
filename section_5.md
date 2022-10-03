@@ -316,3 +316,30 @@ test('displays image from each topping option from server', async () => {
   ]);
 });
 ```
+
+# Sercer Errors : Planning
+
+- Fill in that catch statement we left as TODO
+- Display AlertBanner component if axios call throws error
+  - instead of content from server
+- Use simple react-bootstrap alert
+  - [https://react-bootstrap.github.io/components/alerts/](https://react-bootstrap.github.io/components/alerts/)
+  - role : alert
+- By default, handler return non-error response
+  - Override with error response for particular tests
+
+# Jest Debugging Tools
+
+- Jest debugging tools in this section
+  - running only one test file
+  - running only one test within a file
+- To give us something to debug:
+  - Going to write code I know won’t pass
+
+# Review of Alert Testig
+
+- Override Mock Service Worker response for individual tests
+- Misleading Unable to find role =”alert” error
+- Isolate file by typeing `p` in jest watch mode
+- Isolate test within file with test.only or test.skip
+- waitFor for tests where await findBy\* isn’t enough
