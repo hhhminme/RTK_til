@@ -1,7 +1,4 @@
 # Section 7 : 최종 시험 : 주문 단계
-
-[Final+Exam+Code+Quiz+Spec.pdf](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/21c07ee9-21c2-404b-8b84-8579235540c8/FinalExamCodeQuizSpec.pdf)
-
 # New Handler
 
 - Phost order to server
