@@ -8,7 +8,8 @@
 
 [https://kentcdodds.com/blog/application-state-management-with-react](https://kentcdodds.com/blog/application-state-management-with-react)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aaf07415-1b6e-4570-8f03-a80dd7afebf2/Untitled.png)
+![image](https://user-images.githubusercontent.com/54930877/193603487-426981d0-39aa-4a87-9198-7aec4d619813.png)
+
 
 # Custom Render
 
@@ -40,9 +41,9 @@ export { renderWithContext as render };
 
 # Code Quiz, Toppings Subtotal
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a180bea7-34a4-4e34-b556-4e318ec30e65/Untitled.png)
+![image](https://user-images.githubusercontent.com/54930877/193603566-a9771441-73ef-42a7-a6a4-311419395e63.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/742ba053-69a0-4d84-8b3c-f94f4ef97e20/Untitled.png)
+![image](https://user-images.githubusercontent.com/54930877/193603607-87f44c63-29bd-4248-b8ac-8505586653ea.png)
 
 ```jsx
 // totalUpadtes.test.jsx
@@ -117,7 +118,7 @@ test('update topping subtotal when topping change', async () => {
 
 # Code Quiz Grand Total
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fb8dfaf8-7c32-442f-890f-bfe109f96df2/Untitled.png)
+![image](https://user-images.githubusercontent.com/54930877/193603669-95459e3b-fdc1-441f-a626-1077d678dcdb.png)
 
 # How to find element
 
@@ -335,10 +336,10 @@ test('grand total updates properly if topping is added first', async () => {
   });
 });
 ```
+![image](https://user-images.githubusercontent.com/54930877/193603789-2d68f6ca-2d41-4a0b-9580-bdd8670c119f.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/88790b0d-1c53-46b7-891d-7c9d43d047ed/Untitled.png)
+![image](https://user-images.githubusercontent.com/54930877/193603813-a0619c18-005e-463e-acfb-2afa705105f8.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/53a73e68-996e-4c77-b8f4-5560fd65113f/Untitled.png)
 
 # Should Tests Have Caught This?
 
