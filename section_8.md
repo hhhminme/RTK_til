@@ -2,19 +2,14 @@
 
 # Exercises in this section
 
-| Exercise                                         | Testing concepts                       |
-| ------------------------------------------------ | -------------------------------------- |
-| Confirm “Loading” shows while contraction server | -async events                          |
-| -check that element disappears from DOM          |
-| Optionally show “Toppings” on summary page       | -“happy path” test with different path |
-| -confirm element is not on page                  |
-| Disable order button if no scoops are ordered    | conditions from button to be enabled   |
-| Validate scoop count value                       | -jest mcok function passed as prop     |
-| -jest-dom toHaveClass assertion                  |
-
-| Don’t update total if scoop count is invalid
-prerequisite : Validate scoop count value | minimum component to test |
-| show alert for error when submitting order | error response from server |
+| Exercise                                                                                | Testing concepts                                                      |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Confirm “Loading” shows while contraction server                                        | async events, check that element disappears from DOM                  |
+| Optionally show “Toppings” on summary page                                              | “happy path” test with different path, confirm element is not on page |
+| Disable order button if no scoops are ordered                                           | conditions from button to be enabled                                  |
+| Validate scoop count value                                                              | jest mcok function passed as prop, jest-dom toHaveClass assertion     |
+| Don’t update total if scoop count is invalid, prerequisite : Validate scoop count value | minimum component to test                                             |
+| show alert for error when submitting order                                              | error response from server                                            |
 
 ```tsx
 //expect that loading header
@@ -36,16 +31,15 @@ expect(notLoading).not.toBeInTheDocument();
 
 # Standard Questions
 
-| Question                                               | Answer for this Exercise                                    |
-| ------------------------------------------------------ | ----------------------------------------------------------- |
-| What to render?                                        | happy path usually means App                                |
-| Pass props?                                            | No, App has no props                                        |
-| Wrap render?                                           | No, App already wrap within component                       |
-| Which file for tests?                                  | orderPhase.test.jsx works; moving from one phase to another |
-| What to test?                                          | - Toppings header is not there                              |
-| - Anything else? No hard-and-fase reight answers here! |
-| How to test?                                           | Which query to assert somethings’s not on the page?         |
-| Do we need to async / await?                           | Is there anything async                                     |
+| Question                     | Answer for this Exercise                                                           |
+| ---------------------------- | ---------------------------------------------------------------------------------- |
+| What to render?              | happy path usually means App                                                       |
+| Pass props?                  | No, App has no props                                                               |
+| Wrap render?                 | No, App already wrap within component                                              |
+| Which file for tests?        | orderPhase.test.jsx works; moving from one phase to another                        |
+| What to test?                | Toppings header is not there, Anything else? No hard-and-fase reight answers here! |
+| How to test?                 | Which query to assert somethings’s not on the page?                                |
+| Do we need to async / await? | Is there anything async                                                            |
 
 ```jsx
 test('disable order button if there are no scoops ordered', async () => {
