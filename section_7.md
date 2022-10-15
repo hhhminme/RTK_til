@@ -149,3 +149,23 @@ test('order phases for happy path', async () => {
   await screen.findByRole('checkbox', { name: 'Cherries' });
 });
 ```
+
+# Jest Mocks as Props
+
+- Added a prop to top level page components
+  - `setOrderPhase`
+- Other components also have functionas as props
+  - `updateItemCount` for the ScoopOption / ToppingOption components
+- May need to pass as prop when rendering in tests
+  - TypeScript, PropTypes or other prop validators will require
+  - Or will get called in tests, but doesn’t matter for test
+    - Testing that scoop count in invalid will call `updateItemCount`
+
+# Passing a Mock as a Prop
+
+- How to pass when rendering component in test?
+- `jest.fn()`
+  - jest mock functiion
+  - Does not do anything
+  - Merely a placeholder to avoid errors
+- Example:
