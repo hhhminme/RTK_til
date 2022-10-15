@@ -14,6 +14,8 @@
 
 [Section 6 : Provider에 래핑된 컴포넌트 테스트하기](https://github.com/hhhminme/RTL_til/blob/main/section_6.md)
 
+[Section 7 : 최종 시험 : 주문 단계](https://github.com/hhhminme/RTL_til/blob/main/section_7.md)
+
 # 질문 항목
 
 [WARNING: breaking changes in user-event v14](https://github.com/bonnie/udemy-TESTING-LIBRARY/issues/12)
