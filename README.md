@@ -16,6 +16,9 @@
 
 [Section 7 : 최종 시험 : 주문 단계](https://github.com/hhhminme/RTL_til/blob/main/section_7.md)
 
+[Section 8 : 선택적 추가 연습](https://github.com/hhhminme/RTL_til/blob/main/section_8.md)
+
+
 # 질문 항목
 
 [WARNING: breaking changes in user-event v14](https://github.com/bonnie/udemy-TESTING-LIBRARY/issues/12)
