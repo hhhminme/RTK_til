@@ -1,3 +1,5 @@
+
+
 # RTL_til
 
 ### 해당 레포지토리는 [Testing React with Jest and React Testing Library (RTL)](https://www.udemy.com/course/react-testing-library/)를 보면서 정리한 내용과 코드 입니다. 
@@ -18,7 +20,9 @@
 
 [Section 8 : 선택적 추가 연습](https://github.com/hhhminme/RTL_til/blob/main/section_8.md)
 
-
 # 질문 항목
 
 [WARNING: breaking changes in user-event v14](https://github.com/bonnie/udemy-TESTING-LIBRARY/issues/12)
+
+![유데미 수료증](https://user-images.githubusercontent.com/54930877/196022058-4c6da2ee-8329-40cc-ad6b-12d187377673.jpeg)
+
